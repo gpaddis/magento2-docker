@@ -58,4 +58,6 @@ docker-compose up -d --build
 echo "The docker container was set up correctly."
 echo "To install magento, open a shell in the container and run the script install-magento.sh in the app/ directory."
 
+# Remove git and the current script.
 rm -rf .git
+rm $0
