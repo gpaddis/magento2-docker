@@ -3,7 +3,7 @@ php bin/magento setup:install \
 --admin-lastname=Doe \
 --admin-email=johndoe@example.com \
 --admin-user=admin \
---admin-password='admin' \
+--admin-password='admin123' \
 --base-url=https://local.domain.com \
 --base-url-secure=https://local.domain.com \
 --backend-frontname=admin \
@@ -19,3 +19,5 @@ php bin/magento setup:install \
 --admin-use-security-key=1 \
 --session-save=files \
 --use-sample-data
+
+echo "Setup complete! Shop URL: https://local.domain.com."

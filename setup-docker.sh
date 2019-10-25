@@ -47,3 +47,8 @@ echo "please enter your password:"
 sudo -- sh -c "echo '127.0.0.1 ${domainName}' >> /etc/hosts"
 
 docker-compose up -d --build
+
+echo "The docker container was set up correctly."
+echo "To install magento, open a shell in the container and run the script install-magento.sh in the app/ directory."
+
+rm -rf .git
