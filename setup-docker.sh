@@ -29,7 +29,8 @@ searchAndReplace() {
 }
 
 if [ ! -d "$projectName" ]; then
-    echo "$projectName" >> .gitignore
+    echo "$projectName" >> .gitignore # In case the installation fails somewhere.
+    echo "The project ${projectName} does not yet exist. Installing Magento..."
     composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition $projectName
 
     # Increase memory limits
@@ -52,7 +53,6 @@ if [ -f "install-magento.sh" ]; then
 fi
 
 echo "Adding ${domainName} to /etc/hosts..."
-echo "please enter your password:"
 sudo -- sh -c "echo '127.0.0.1 ${domainName}' >> /etc/hosts"
 
 docker-compose up -d --build
