@@ -3,7 +3,7 @@ This repository automates the setup described in this tutorial by Shawn Abramson
 
 You will be asked for your Magento credentials in order to download the Magento repository and install all dependencies. You can save them globally on your system after the first installation.
 
-To start, clone this repository in a directory and run the script `install-magento.sh`.
+To start, clone this repository anywhere on your disk and run the script `install-magento.sh`.
 
 ## Commands
 * Build and start the container: `docker-compose up -d --build`
