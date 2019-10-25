@@ -28,13 +28,16 @@ searchAndReplace() {
     fi
 }
 
-composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition $projectName
+if [ ! -d "$projectName" ]; then
+    echo "$projectName" >> .gitignore
+    composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition $projectName
 
-# Increase memory limits
-find $projectName -name '.htaccess' -exec sed -i '' s/756M/2048M/g {} + && \
-find $projectName -name '.htaccess' -exec sed -i '' s/768M/2048M/g {} + && \
-find $projectName -name '.user.ini' -exec sed -i '' s/756M/2048M/g {} + && \
-find $projectName -name '.user.ini' -exec sed -i '' s/768M/2048M/g {} +
+    # Increase memory limits
+    find $projectName -name '.htaccess' -exec sed -i '' s/756M/2048M/g {} + && \
+    find $projectName -name '.htaccess' -exec sed -i '' s/768M/2048M/g {} + && \
+    find $projectName -name '.user.ini' -exec sed -i '' s/756M/2048M/g {} + && \
+    find $projectName -name '.user.ini' -exec sed -i '' s/768M/2048M/g {} +
+fi
 
 searchAndReplace "/path/to/magento" "${PWD}/${projectName}" docker-compose.yml
 searchAndReplace "custom" "${projectName}" docker-compose.yml
