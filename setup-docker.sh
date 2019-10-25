@@ -44,6 +44,8 @@ searchAndReplace "custom" "${projectName}" docker-compose.yml
 searchAndReplace "local.domain.com" "$domainName" docker-compose.yml
 searchAndReplace "local.domain.com" "$domainName" install-magento.sh
 
+searchAndReplace "custom" "$domainName" shell
+
 mv install-magento.sh $projectName/.
 chmod +x $projectName/install-magento.sh
 

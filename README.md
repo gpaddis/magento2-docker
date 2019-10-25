@@ -6,16 +6,17 @@ You will be asked for your Magento credentials in order to download the Magento 
 To start, clone this repository anywhere on your disk and run the script `install-magento.sh`.
 
 ## Commands
-* Build and start the container: `docker-compose up -d --build`
-* Spawn a shell in the container: `docker exec -it web bash`
-* Stop the container: `docker-compose stop`
+* Build and start the container: `./start`
+* Spawn a shell in the container: `./shell`
+* Stop the container: `./stop`
 
 ## Addresses
 * MariaDB: 127.0.0.1:3307
 * PHPMyAdmin: 127.0.0.1:8080
 
 ## Troubleshooting
-You might have to stop services on your host system (e.g. Apache or MySQL) to make the ports available.
+* Check that you don't have other running containers using the ports 80, 3307 and 8080 with `docker ps`. In case you do, stop them.
+* You might have to stop services on your host system (e.g. Apache or MySQL) to make the ports available.
 
 ## Resources
 * Docker image (web): https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-apache-dev.html#docker-image-tags
