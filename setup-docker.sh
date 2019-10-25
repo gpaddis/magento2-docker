@@ -37,10 +37,12 @@ find $projectName -name '.user.ini' -exec sed -i '' s/756M/2048M/g {} + && \
 find $projectName -name '.user.ini' -exec sed -i '' s/768M/2048M/g {} +
 
 searchAndReplace "/path/to/magento" "${PWD}/${projectName}" docker-compose.yml
+searchAndReplace "custom" "${projectName}" docker-compose.yml
 searchAndReplace "local.domain.com" "$domainName" docker-compose.yml
 searchAndReplace "local.domain.com" "$domainName" install-magento.sh
 
 mv install-magento.sh $projectName/.
+chmod +x $projectName/install-magento.sh
 
 echo "Adding ${domainName} to /etc/hosts..."
 echo "please enter your password:"

@@ -2,7 +2,7 @@ version: '3'
 services:
     web:
         image: webdevops/php-apache-dev:7.2
-        container_name: web
+        container_name: web-custom
         restart: always
         user: application
         environment:
@@ -21,10 +21,10 @@ services:
           - "443:443"
           - "32823:22"
         links:
-          - mysql
+          - mysql-custom
     mysql:
         image: mariadb:10
-        container_name: mysql
+        container_name: mysql-custom
         restart: always
         ports:
           - "3307:3306"
@@ -34,7 +34,7 @@ services:
         volumes:
           - db-data:/var/lib/mysql
     phpmyadmin:
-        container_name: phpmyadmin
+        container_name: phpmyadmin-custom
         restart: always
         image: phpmyadmin/phpmyadmin:latest
         environment:
