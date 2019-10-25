@@ -41,13 +41,13 @@ fi
 
 searchAndReplace "/path/to/magento" "${PWD}/${projectName}" docker-compose.yml
 searchAndReplace "custom" "${projectName}" docker-compose.yml
-searchAndReplace "local.domain.com" "$domainName" docker-compose.yml
-searchAndReplace "custom" "$domainName" shell
+searchAndReplace "local.domain.com" "${domainName}" docker-compose.yml
+searchAndReplace "custom" "${projectName}" shell
 
 if [ -f "install-magento.sh" ]; then
-    searchAndReplace "local.domain.com" "$domainName" install-magento.sh
+    searchAndReplace "local.domain.com" "${domainName}" install-magento.sh
     chmod +x install-magento.sh
-    mv install-magento.sh $projectName/.
+    mv install-magento.sh ${projectName}/.
 fi
 
 echo "Adding ${domainName} to /etc/hosts..."
