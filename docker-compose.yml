@@ -1,6 +1,6 @@
 version: '3'
 services:
-    web:
+    web-custom:
         image: webdevops/php-apache-dev:7.2
         container_name: web-custom
         restart: always
@@ -22,7 +22,7 @@ services:
           - "32823:22"
         links:
           - mysql-custom
-    mysql:
+    mysql-custom:
         image: mariadb:10
         container_name: mysql-custom
         restart: always
@@ -32,8 +32,8 @@ services:
           - MYSQL_ROOT_PASSWORD=root
           - MYSQL_DATABASE=magento
         volumes:
-          - db-data:/var/lib/mysql
-    phpmyadmin:
+          - db-data-custom:/var/lib/mysql
+    phpmyadmin-custom:
         container_name: phpmyadmin-custom
         restart: always
         image: phpmyadmin/phpmyadmin:latest
@@ -44,10 +44,10 @@ services:
         ports:
           - "8080:80"
         links:
-          - mysql:db
+          - mysql-custom:db
         depends_on:
-          - mysql
+          - mysql-custom
 
 volumes:
-    db-data:
+    db-data-custom:
         external: false
