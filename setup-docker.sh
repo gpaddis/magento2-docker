@@ -1,6 +1,8 @@
 #!/bin/bash
 # By default, the shop will be available under https://${projectname}.local when the setup is complete.
 
+set -e
+
 projectName="$1"
 domainName="${projectName}.local"
 
@@ -32,10 +34,13 @@ composer create-project --repository-url=https://repo.magento.com/ magento/proje
 find $projectName -name '.htaccess' -exec sed -i '' s/756M/2048M/g {} + && \
 find $projectName -name '.htaccess' -exec sed -i '' s/768M/2048M/g {} + && \
 find $projectName -name '.user.ini' -exec sed -i '' s/756M/2048M/g {} + && \
-find $projectName -name '.user.ini' -exec sed -i '' s/768M/2048M/g {}
+find $projectName -name '.user.ini' -exec sed -i '' s/768M/2048M/g {} +
 
 searchAndReplace "/path/to/magento" "${PWD}/${projectName}" docker-compose.yml
 searchAndReplace "local.domain.com" "$domainName" docker-compose.yml
+searchAndReplace "local.domain.com" "$domainName" install-magento.sh
+
+mv install-magento.sh $projectName/.
 
 echo "Adding ${domainName} to /etc/hosts..."
 echo "please enter your password:"
