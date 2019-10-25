@@ -7,7 +7,7 @@ php bin/magento setup:install \
 --base-url=https://local.domain.com \
 --base-url-secure=https://local.domain.com \
 --backend-frontname=admin \
---db-host=mysql \
+--db-host=mysql-custom \
 --db-name=magento \
 --db-user=root \
 --db-password=root \
