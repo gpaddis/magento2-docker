@@ -47,7 +47,7 @@ searchAndReplace "custom" "${projectName}" shell
 
 if [ -f "install-magento.sh" ]; then
     searchAndReplace "local.domain.com" "${domainName}" install-magento.sh
-    searchAndReplace "custom" "${projectname}" install-magento.sh
+    searchAndReplace "custom" "${projectName}" install-magento.sh
     chmod +x install-magento.sh
     mv install-magento.sh ${projectName}/.
 fi
