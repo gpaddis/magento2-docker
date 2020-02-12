@@ -1,7 +1,7 @@
 version: '3'
 services:
     web-custom:
-        image: webdevops/php-apache-dev:7.2
+        image: webdevops/php-apache-dev:7.3
         container_name: web-custom
         restart: always
         user: application
