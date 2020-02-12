@@ -29,7 +29,7 @@ searchAndReplace() {
 }
 
 if [ ! -d "$projectName" ]; then
-    echo "$projectName" >> .gitignore # In case the installation fails somewhere.
+    echo -e "\n$projectName" >> .gitignore # In case the installation fails somewhere.
     echo "The project ${projectName} does not yet exist. Installing Magento..."
     composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.3.3 $projectName
 
